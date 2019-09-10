@@ -11,7 +11,7 @@
   System.String
   The plaintext decoded string is output as a System.String.
 .NOTES
-  Version:        0.1
+  Version:        0.2
   Author:         Adam Creech
   Creation Date:  5/29/2018
   Purpose/Change: Initial script development
@@ -24,11 +24,11 @@
 function ConvertFrom-Base64String {
 param(
     [Parameter(
-        Mandatory = $true
+        Mandatory = $true,ValueFromPipeline=$true
     )]
     [string]$Base64String
 )
-
-$decoded = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($Base64String))
-Write-Output -InputObject $decoded
+process{
+    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($Base64String))
+}
 }

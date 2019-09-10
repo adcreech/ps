@@ -11,7 +11,7 @@
   System.String
   The base64 encoded string is output as a System.String.
 .NOTES
-  Version:        0.1
+  Version:        0.2
   Author:         Adam Creech
   Creation Date:  5/29/2018
   Purpose/Change: Initial script development
@@ -24,11 +24,11 @@
 function ConvertTo-Base64String {
 param(
     [Parameter(
-        Mandatory = $true
+        Mandatory = $true,ValueFromPipeline=$true
     )]
     [string]$PlainText
 )
-
-$encoded = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($PlainText))
-Write-Output -InputObject $encoded
+process{
+    [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($PlainText))
+}
 }
