@@ -1,3 +1,3 @@
-﻿function Get-DateUTC {
-    [datetime]::Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+function Get-DateUTC {
+    (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
 }
